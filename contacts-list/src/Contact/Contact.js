@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import { Outlet, Link } from "react-router-dom";
-var fs = require('fs');
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import "bootstrap/dist/css/bootstrap.css";
 
 function Contact(props) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const deleteConfirmation = () => {
     for (let i = 0; i < props.contacts.length; i++) {
         if (props.contacts[i].id === props.id) props.contacts.splice(i, 1);
@@ -35,7 +42,7 @@ function Contact(props) {
         >
           Edit
         </Link>
-        <button id="deleteButton" onClick={deleteConfirmation}>
+        <button id="deleteButton" onClick={handleShow}>
           Delete
         </button>
         <Link
@@ -54,6 +61,20 @@ function Contact(props) {
           See details
         </Link>
       </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Deletion confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Do you really want to delete this contact?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            No
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
