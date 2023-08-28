@@ -22,7 +22,7 @@ function Contact(props) {
         <img src={require("./../images/" + props.image)} />
       </div>
       <div id="details_div">
-        <h1>{props.name}</h1>
+        <h2>{props.name}</h2>
         <p>{props.contact}</p>
         <p>{props.email}</p>
       </div>
