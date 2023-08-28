@@ -38,7 +38,7 @@ function Home() {
                 <Link to='/add' style={{backgroundColor:"white",color:"black",textDecoration:"none", fontWeight:"bolder", width:"100%", textAlign:"center"}}>Add contact</Link>
             </div>
         </div>
-      {loading === false ? contacts.map((i) => {return <Contact key={i.id} id={i.id} image={i.picture} name={i.name} contact={i.contact} email={i.email}></Contact>}) : <></>}
+      {loading === false ? contacts.map((i) => {return <Contact key={i.id} contacts={contacts} id={i.id} image={i.picture} name={i.name} contact={i.contact} email={i.email}></Contact>}) : <></>}
     </div>
   );
 }
