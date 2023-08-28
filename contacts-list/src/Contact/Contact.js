@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Contact.css";
 import { Outlet, Link } from "react-router-dom";
+var fs = require('fs');
 
 function Contact(props) {
   const deleteConfirmation = () => {
     for (let i = 0; i < props.contacts.length; i++) {
         if (props.contacts[i].id === props.id) props.contacts.splice(i, 1);
     }
-    console.log(props.contacts);
   };
   return (
     <div id="card">
@@ -21,7 +21,7 @@ function Contact(props) {
       </div>
       <div id="options">
         <Link
-          to="/edit"
+          to={`/edit/${props.id}`}
           style={{
             backgroundColor: "white",
             color: "black",

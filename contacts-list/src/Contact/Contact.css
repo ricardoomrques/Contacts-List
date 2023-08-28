@@ -18,6 +18,11 @@ img {
     height: 150px;
 }
 
+#details_div {
+    margin: auto;
+    margin-left: 2.5%;
+}
+
 #options {
     display: flex;
     flex-direction: column;
