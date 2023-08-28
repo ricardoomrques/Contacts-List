@@ -1,0 +1,25 @@
+[{
+    "id": "1",
+    "name": "Pedro Lopes",
+    "contact": "918645074",
+    "email": "pedro.lopes@gmail.com",
+    "picture": "1.jpg"
+  }, {
+    "id": "2",
+    "name": "Vasco Almeida",
+    "contact": "968130295",
+    "email": "vasco.almeida@gmail.com",
+    "picture": "2.jpg"
+  }, {
+    "id": "3",
+    "name": "Teresa Ferreira",
+    "contact": "961049286",
+    "email": "teresa.ferreira@gmail.com",
+    "picture": "3.jpg"
+  }, {
+    "id": "4",
+    "name": "Mariana Teixeira",
+    "contact": "919639723",
+    "email": "mariana.teixeira@gmail.com",
+    "picture": "4.jpg"
+  }]
