@@ -1,0 +1,26 @@
+#card {
+    background-color: lightgray;
+    width: 50%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 30% 50% auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#img_div {
+    margin: auto;
+    margin-left: 5%;
+}
+
+img {
+    width: 130px;
+    height: 150px;
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
