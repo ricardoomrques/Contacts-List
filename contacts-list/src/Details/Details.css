@@ -1,0 +1,13 @@
+#details > h1 {
+    text-align: center;
+    color: lightseagreen;
+}
+
+#contact_details {
+    text-align: center;
+}
+
+#contact_details > img {
+    width: 300px;
+    height: 350px;
+}

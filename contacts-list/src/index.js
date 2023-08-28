@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Home from './Home/Home';
-import Contact from './Contact/Contact';
+import Details from './Details/Details';
+import AddContact from './AddContact/AddContact';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -11,7 +12,8 @@ root.render(
   <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="/details/:id" element={<Details />} />
+          <Route path="/add" element={<AddContact />} />
       </Routes>
     </BrowserRouter>
 );

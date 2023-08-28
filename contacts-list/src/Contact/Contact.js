@@ -15,9 +15,9 @@ class Contact extends React.Component {
           <p>{this.props.email}</p>
         </div>
         <div id="options">
-            <Link to="contact" style={{backgroundColor:"white",color:"black",textDecoration:"none", marginBottom:"1.5rem", fontWeight:"bolder", width:"100px"}}>Edit</Link>
+            <Link to='/edit' style={{backgroundColor:"white",color:"black",textDecoration:"none", marginBottom:"1.5rem", fontWeight:"bolder", width:"100px"}}>Edit</Link>
             <Link to="contact" style={{backgroundColor:"white",color:"black",textDecoration:"none", fontWeight:"bolder", width:"100px"}}>Delete</Link>
-            <Link to="contact" style={{backgroundColor:"white",color:"black",textDecoration:"none", marginTop:"1.5rem", fontWeight:"bolder", width:"100px"}}>See details</Link>
+            <Link to={`/details/${this.props.id}`} style={{backgroundColor:"white",color:"black",textDecoration:"none", marginTop:"1.5rem", fontWeight:"bolder", width:"100px"}}>See details</Link>
         </div>
       </div>
     );

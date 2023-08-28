@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import Contact from '../Contact/Contact';
+import { Outlet, Link } from "react-router-dom";
 import './Home.css';
 
 function Home() {
@@ -31,8 +32,13 @@ function Home() {
 
   return (
     <div className="Home">
-        <h1 id="title">Contacts List</h1>
-      {loading === false ? contacts.map((i) => {return <Contact key={i.id} image={i.picture} name={i.name} contact={i.contact} email={i.email}></Contact>}) : <></>}
+        <div id="header">
+            <h1 id="title">Contacts List</h1>
+            <div style={{textAlign:"center"}}>
+                <Link to='/add' style={{backgroundColor:"white",color:"black",textDecoration:"none", fontWeight:"bolder", width:"100%", textAlign:"center"}}>Add contact</Link>
+            </div>
+        </div>
+      {loading === false ? contacts.map((i) => {return <Contact key={i.id} id={i.id} image={i.picture} name={i.name} contact={i.contact} email={i.email}></Contact>}) : <></>}
     </div>
   );
 }
