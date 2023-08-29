@@ -16,7 +16,6 @@ function AddContact() {
   const navigate = useNavigate();
 
   const addContact = () => {
-    console.log(contacts.slice(-1).id + 1);
     let add = false;
     if (name.length < 5) {
       add = true;
@@ -48,8 +47,8 @@ function AddContact() {
     }
 
     if (!add) {
-      const newContact = {"id": parseInt(contacts.slice(-1).id + 1).toString(), "name": name, "contact": contact,
-      "email": email, "picture": picture};
+      const newContact = {"id": (parseInt(contacts.slice(-1)[0].id) + 1).toString(), "name": name, "contact": contact,
+      "email": email, "picture": picture.substring(picture.lastIndexOf('\\') + 1)};
   
       fetch('http://localhost:3004/contacts', {
         method: "POST",
@@ -58,6 +57,8 @@ function AddContact() {
         },
         body: JSON.stringify(newContact)
       })
+
+      navigate('/');
     }
   }
 

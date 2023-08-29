@@ -27,6 +27,13 @@
       "contact": "918562737",
       "email": "mariana.teixeira@gmail.com",
       "picture": "4.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Renato",
+      "contact": "926050340",
+      "email": "renato.borges@gmail.com",
+      "picture": "5.jpg"
     }
   ]
 }
