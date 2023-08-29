@@ -8,26 +8,48 @@ import "./AddContact.css";
 
 function AddContact() {
   const [contacts, setContacts] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [email, setEmail] = useState('');
+  const [picture, setPicture] = useState('');
+
   const navigate = useNavigate();
 
   const addContact = () => {
     console.log(contacts.slice(-1).id + 1);
-    let repeated = false;
+    let add = false;
+    if (name.length < 5) {
+      add = true;
+      alert("Name must have at least 5 characters!");
+      window.location.reload(true);
+    }
+
+    else if (!validateEmail(email)) {
+      add = true;
+      alert("Email not valid!");
+      window.location.reload(true);
+    }
+
+    else if (contact.length !== 9 || !isNumeric(contact)) {
+      add = true;
+      alert("Contact must have 9 numbers!");
+      window.location.reload(true);
+    }
+    
     for (let i = 0; i < contacts.length; i++) {
       if (
-        contacts[i].email === document.getElementById("emailForm").value ||
-        contacts[i].contact === document.getElementById("contactForm").value
+        contacts[i].email === email ||
+        contacts[i].contact === contact
       ) {
-        repeated = true;
+        add = true;
         alert("Contact or email already registered in the system!");
         window.location.reload(true);
       }
     }
 
-    if (!repeated) {
-      const newContact = {"id": parseInt(contacts.slice(-1).id + 1).toString(), "name": document.getElementById("nameForm").value, "contact": document.getElementById("contactForm").value,
-      "email": document.getElementById("emailForm").value, "picture": document.getElementById("pictureForm").value};
+    if (!add) {
+      const newContact = {"id": parseInt(contacts.slice(-1).id + 1).toString(), "name": name, "contact": contact,
+      "email": email, "picture": picture};
   
       fetch('http://localhost:3004/contacts', {
         method: "POST",
@@ -37,7 +59,17 @@ function AddContact() {
         body: JSON.stringify(newContact)
       })
     }
-  } 
+  }
+
+  const isNumeric = (value) => {
+    return /^-?\d+$/.test(value);
+  }
+
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
 
   const getData = () => {
     fetch('http://localhost:3004/contacts', {
@@ -53,7 +85,6 @@ function AddContact() {
       .then(function (myJson) {
         console.log(myJson);
         setContacts(myJson);
-        setLoading(false);
       });
   };
   useEffect(() => {
@@ -75,7 +106,9 @@ function AddContact() {
             type="text"
             placeholder="Name here"
             required
-            minLength={5}
+            onChange={(event) =>
+              setName(event.target.value)
+            }
           />
         </Form.Group>
         <Form.Group
@@ -88,6 +121,9 @@ function AddContact() {
             type="email"
             placeholder="name@example.com"
             required
+            onChange={(event) =>
+              setEmail(event.target.value)
+            }
           />
         </Form.Group>
         <Form.Group
@@ -100,13 +136,14 @@ function AddContact() {
             type="text"
             placeholder="Contact here"
             required
-            minLength={9}
-            maxLength={9}
+            onChange={(event) =>
+              setContact(event.target.value)
+            }
           />
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3 w-25 mx-auto">
           <Form.Label>Picture</Form.Label>
-          <Form.Control id="pictureForm" type="file" accept=".jpg,.png,.jpeg" required />
+          <Form.Control id="pictureForm" type="file" accept=".jpg,.png,.jpeg" required onChange={(event) => setPicture(event.target.value)}/>
         </Form.Group>
         <div style={{ textAlign: "center", marginTop: "5rem" }}>
           <Button
