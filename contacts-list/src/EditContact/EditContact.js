@@ -21,7 +21,7 @@ function EditContact() {
     }
 
     const getData=()=>{
-        fetch('../contacts.json'
+        fetch('http://localhost:3004/contacts'
         ,{
           headers : { 
             'Content-Type': 'application/json',

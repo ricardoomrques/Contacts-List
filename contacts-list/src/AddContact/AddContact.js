@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
@@ -8,19 +9,38 @@ import "./AddContact.css";
 function AddContact() {
   const [contacts, setContacts] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-  const verify = () => {
+  const addContact = () => {
+    console.log(contacts.slice(-1).id + 1);
+    let repeated = false;
     for (let i = 0; i < contacts.length; i++) {
       if (
         contacts[i].email === document.getElementById("emailForm").value ||
         contacts[i].contact === document.getElementById("contactForm").value
-      )
+      ) {
+        repeated = true;
         alert("Contact or email already registered in the system!");
+        window.location.reload(true);
+      }
     }
-  };
+
+    if (!repeated) {
+      const newContact = {"id": parseInt(contacts.slice(-1).id + 1).toString(), "name": document.getElementById("nameForm").value, "contact": document.getElementById("contactForm").value,
+      "email": document.getElementById("emailForm").value, "picture": document.getElementById("pictureForm").value};
+  
+      fetch('http://localhost:3004/contacts', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newContact)
+      })
+    }
+  } 
 
   const getData = () => {
-    fetch("../contacts.json", {
+    fetch('http://localhost:3004/contacts', {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -51,6 +71,7 @@ function AddContact() {
         >
           <Form.Label>Name</Form.Label>
           <Form.Control
+            id="nameForm"
             type="text"
             placeholder="Name here"
             required
@@ -85,13 +106,13 @@ function AddContact() {
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3 w-25 mx-auto">
           <Form.Label>Picture</Form.Label>
-          <Form.Control type="file" accept=".jpg,.png,.jpeg" required />
+          <Form.Control id="pictureForm" type="file" accept=".jpg,.png,.jpeg" required />
         </Form.Group>
         <div style={{ textAlign: "center", marginTop: "5rem" }}>
           <Button
             type="submit"
             style={{ textAlign: "center" }}
-            onClick={verify}
+            onClick={addContact}
           >
             Create contact
           </Button>

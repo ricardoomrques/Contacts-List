@@ -10,7 +10,7 @@ function Details() {
     const [loading,setLoading] = useState(true);
 
     const getData=()=>{
-        fetch('../contacts.json'
+        fetch('http://localhost:3004/contacts'
         ,{
           headers : { 
             'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ function Details() {
         <h1>Contact {id} Details</h1>
         {loading === false ?
         <div id="contact_details">
-            <img src={require("./../images/" + getContact(id).picture)} />
+            <img src={require('../images/' + getContact(id).picture)} />
             <p>Name: {getContact(id).name}</p>
             <p>Contact: {getContact(id).contact}</p>
             <p style={{marginBottom:"5.5rem"}}>Email: {getContact(id).email}</p>

@@ -12,14 +12,17 @@ function Contact(props) {
   const handleShow = () => setShow(true);
 
   const deleteConfirmation = () => {
-    for (let i = 0; i < props.contacts.length; i++) {
-        if (props.contacts[i].id === props.id) props.contacts.splice(i, 1);
-    }
+    console.log(props.id);
+    fetch('http://localhost:3004/contacts/' + props.id, {
+      method: "DELETE",
+    }).then(() => {
+      window.location.reload(true);
+    });
   };
   return (
     <div id="card">
       <div id="img_div">
-        <img src={require("./../images/" + props.image)} />
+        <img src={require('../images/' + props.image)} alt="Photo"/>
       </div>
       <div id="details_div">
         <h2>{props.name}</h2>
@@ -70,7 +73,7 @@ function Contact(props) {
           <Button variant="secondary" onClick={handleClose}>
             No
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={deleteConfirmation}>
             Yes
           </Button>
         </Modal.Footer>
