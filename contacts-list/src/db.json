@@ -2,10 +2,10 @@
   "contacts": [
     {
       "id": "1",
-      "name": "Pedro",
+      "name": "Lara Fernandes",
       "contact": "918645074",
-      "email": "pedro.lopes@gmail.com",
-      "picture": "1.jpg"
+      "email": "lara.fernandes@gmail.com",
+      "picture": "7.jpg"
     },
     {
       "id": "2",
@@ -23,17 +23,17 @@
     },
     {
       "id": "4",
-      "name": "Mariana Teixeira",
-      "contact": "918562737",
-      "email": "mariana.teixeira@gmail.com",
-      "picture": "4.jpg"
-    },
-    {
-      "id": "5",
       "name": "Renato",
       "contact": "926050340",
       "email": "renato.borges@gmail.com",
       "picture": "5.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Mariana Teixeira",
+      "contact": "918562737",
+      "email": "mariana.teixeira@gmail.com",
+      "picture": "4.jpg"
     }
   ]
 }
