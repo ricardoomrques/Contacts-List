@@ -1,16 +1,18 @@
 #card {
-    background-color: lightgray;
-    width: 50%;
+    background-color: lightcyan;
+    width: 90%;
     margin: auto;
     display: grid;
+    border-radius: 10%;
     grid-template-columns: 30% 50% auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
 #img_div {
+    background-color: lightcyan;
     margin: auto;
-    margin-left: 5%;
+    margin: 10%;
 }
 
 img {
@@ -19,11 +21,13 @@ img {
 }
 
 #details_div {
+    background-color: lightcyan;
     margin: auto;
     margin-left: 2.5%;
 }
 
 #options {
+    background-color: lightcyan;
     display: flex;
     flex-direction: column;
     margin: auto;

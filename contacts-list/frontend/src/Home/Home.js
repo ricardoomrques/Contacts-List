@@ -20,10 +20,14 @@ function Home() {
         <div id="header">
             <h1 id="title">Contacts List</h1>
             <div style={{textAlign:"center"}}>
-                <Link to='/add' style={{backgroundColor:"white",color:"black",textDecoration:"none", fontWeight:"bolder", width:"100%", textAlign:"center"}}>Add contact</Link>
+                <Link to='/add' style={{color:"black",textDecoration:"none", fontWeight:"bolder", width:"100%", textAlign:"center"}}>Add contact</Link>
             </div>
         </div>
-      {loading === false ? contacts.map((i) => {return <Contact key={i.id} contacts={contacts} id={i.id} image={i.picture} name={i.name} contact={i.contactNumber} email={i.email}></Contact>}) : <></>}
+        <div id="contacts">
+        {loading === false ? contacts.map((i) => {
+          return <Contact key={i.id} contacts={contacts} id={i.id} image={i.picture} name={i.name} contact={i.contactNumber} email={i.email}></Contact>
+        }) : <></>}
+        </div>
     </div>
   );
 }

@@ -1,3 +1,7 @@
+* {
+    background-color: lightyellow;
+}
+
 #header {
     display: inline;
 }
@@ -7,4 +11,9 @@
     font-size: xx-large;
     font-weight: bolder;
     color: lightseagreen;
+}
+
+#contacts {
+    display: grid;
+    grid-template-columns: auto auto;
 }

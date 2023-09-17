@@ -30,9 +30,9 @@ function Contact(props) {
         <img src={require("../images/" + props.image)} alt="Photo" />
       </div>
       <div id="details_div">
-        <h2>{props.name}</h2>
-        <p>{props.contact}</p>
-        <p>{props.email}</p>
+        <h2 style={{backgroundColor: "lightcyan"}}>{props.name}</h2>
+        <p style={{backgroundColor: "lightcyan"}}>{props.contact}</p>
+        <p style={{backgroundColor: "lightcyan"}}>{props.email}</p>
       </div>
       <div id="options">
         <Link
