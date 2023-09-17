@@ -1,6 +1,7 @@
-import React, { Component, useEffect, useState } from "react";
-import { Outlet, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Axios from 'axios';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
@@ -47,18 +48,14 @@ function AddContact() {
     }
 
     if (!add) {
-      const newContact = {"id": (parseInt(contacts.slice(-1)[0].id) + 1).toString(), "name": name, "contact": contact,
+      const newContact = {"name": name, "contactNumber": contact,
       "email": email, "picture": picture.substring(picture.lastIndexOf('\\') + 1)};
   
-      fetch('http://localhost:3004/contacts', {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(newContact)
-      })
+      Axios.post('http://localhost:3002/api/create', newContact);
 
       navigate('/');
+      window.location.reload(true);
+
     }
   }
 
@@ -73,21 +70,11 @@ function AddContact() {
   };
 
   const getData = () => {
-    fetch('http://localhost:3004/contacts', {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-        setContacts(myJson);
+    Axios.get("http://localhost:3002/api/get").then((data)=>{
+        setContacts(data.data);
       });
   };
+
   useEffect(() => {
     getData();
   }, []);

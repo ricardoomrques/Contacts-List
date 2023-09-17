@@ -20,11 +20,55 @@ app.get("/api/get", (req, res) => {
 // Route to get one contact
 app.get("/api/getFromId/:id", (req, res) => {
   const id = req.params.id;
-  db.query("SELECT * FROM contacts WHERE id = ?", id, (err, result) => {
+  db.query("SELECT * FROM contact WHERE id = ?", id, (err, result) => {
     if (err) {
       console.log(err);
     }
     res.send(result);
+  });
+});
+
+// Route for creating the contact
+app.post("/api/create", (req, res) => {
+  const name = req.body.name;
+  const contactNumber = req.body.contactNumber;
+  const email = req.body.email;
+  const picture = req.body.picture;
+
+  db.query(
+    "INSERT INTO contact (name,contactNumber,email,picture) VALUES (?,?,?,?)",
+    [name, contactNumber, email, picture],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+    }
+  );
+});
+
+// Route to edit a contact
+app.put('/api/edit/:id',(req,res)=>{
+  const id = req.params.id;
+  const name = req.body.name;
+  const contactNumber = req.body.contactNumber;
+  const email = req.body.email;
+  const picture = req.body.picture;
+  
+  db.query("UPDATE contact SET name = ?,contactNumber = ?, email = ?, picture = ? WHERE id = ?",[name,contactNumber,email,picture,id], (err,result)=>{
+      if(err) {
+     console.log(err)   } 
+     console.log(result)
+      });    
+  });
+
+app.delete("/api/delete/:id", (req, res) => {
+  const id = req.params.id;
+
+  db.query("DELETE FROM contact WHERE id= ?", id, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
   });
 });
 

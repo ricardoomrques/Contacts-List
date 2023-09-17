@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Contact.css";
-import { Outlet, Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import { Link } from "react-router-dom";
+import Axios from 'axios';
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.css";
 
 function Contact(props) {
@@ -12,17 +13,21 @@ function Contact(props) {
   const handleShow = () => setShow(true);
 
   const deleteConfirmation = () => {
-    console.log(props.id);
-    fetch('http://localhost:3004/contacts/' + props.id, {
-      method: "DELETE",
-    }).then(() => {
-      window.location.reload(true);
-    });
+    Axios
+      .delete('http://localhost:3002/api/delete/' + props.id)
+      .then((response) => {
+        console.log(`Deleted post with ID ${props.id}`);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    window.location.reload(true);
   };
   return (
     <div id="card">
       <div id="img_div">
-        <img src={require('../images/' + props.image)} alt="Photo"/>
+        <img src={require("../images/" + props.image)} alt="Photo" />
       </div>
       <div id="details_div">
         <h2>{props.name}</h2>
