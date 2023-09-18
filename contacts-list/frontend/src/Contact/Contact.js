@@ -35,39 +35,9 @@ function Contact(props) {
         <p style={{backgroundColor: "lightcyan"}}>{props.email}</p>
       </div>
       <div id="options">
-        <Link
-          to={`/edit/${props.id}`}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            textDecoration: "none",
-            marginBottom: "1.5rem",
-            fontWeight: "bolder",
-            width: "100px",
-            height: "20px",
-            fontFamily: "Arial, Helvetica, sans-serif",
-          }}
-        >
-          Edit
-        </Link>
-        <button id="deleteButton" onClick={handleShow}>
-          Delete
-        </button>
-        <Link
-          to={`/details/${props.id}`}
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            textDecoration: "none",
-            marginTop: "1.5rem",
-            fontWeight: "bolder",
-            width: "100px",
-            height: "20px",
-            fontFamily: "Arial, Helvetica, sans-serif",
-          }}
-        >
-          See details
-        </Link>
+        <a href={`/edit/${props.id}`} class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Edit</a>
+        <a class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true" onClick={handleShow}>Delete</a>
+        <a href={`/details/${props.id}`} class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">See details</a>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

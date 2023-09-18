@@ -26,7 +26,7 @@ function Details() {
 
   return (
     <div id="details">
-      <h1>Contact {id} Details</h1>
+      <h1 id="title">Contact {id} Details</h1>
       {loading === false ? (
         <div id="contact_details">
           <img src={require("../images/" + getContact(id).picture)} />
@@ -35,18 +35,7 @@ function Details() {
           <p style={{ marginBottom: "5.5rem" }}>
             Email: {getContact(id).email}
           </p>
-          <Link
-            to="/"
-            style={{
-              backgroundColor: "white",
-              color: "black",
-              textDecoration: "none",
-              fontWeight: "bolder",
-              width: "100px",
-            }}
-          >
-            Back
-          </Link>
+          <a id="button" href={`/`} class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Back</a>
         </div>
       ) : (
         <></>

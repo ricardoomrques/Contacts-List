@@ -6,6 +6,11 @@
     display: inline;
 }
 
+#button {
+    background-color: white;
+    color: black;
+}
+
 #title {
     text-align: center;
     font-size: xx-large;

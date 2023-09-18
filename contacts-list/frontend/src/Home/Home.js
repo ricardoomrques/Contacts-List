@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import Contact from '../Contact/Contact';
 import Axios from 'axios';
-import { Link } from "react-router-dom";
 import './Home.css';
 
 function Home() {
@@ -20,7 +19,7 @@ function Home() {
         <div id="header">
             <h1 id="title">Contacts List</h1>
             <div style={{textAlign:"center"}}>
-                <Link to='/add' style={{color:"black",textDecoration:"none", fontWeight:"bolder", width:"100%", textAlign:"center"}}>Add contact</Link>
+            <a id="button" href={`/add`} class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Add</a>
             </div>
         </div>
         <div id="contacts">

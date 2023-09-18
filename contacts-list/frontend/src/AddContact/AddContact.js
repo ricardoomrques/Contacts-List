@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Axios from 'axios';
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.css";
 import "./AddContact.css";
 
@@ -81,7 +79,7 @@ function AddContact() {
 
   return (
     <div id="addContact">
-      <h1>Add a new Contact</h1>
+      <h1 id="title">Add a new Contact</h1>
       <Form>
         <Form.Group
           className="mb-3 w-25 mx-auto"
@@ -134,29 +132,11 @@ function AddContact() {
           <Form.Control id="pictureForm" type="file" accept=".jpg,.png,.jpeg" required onChange={(event) => setPicture(event.target.value)}/>
         </Form.Group>
         <div style={{ textAlign: "center", marginTop: "5rem" }}>
-          <Button
-            type="submit"
-            style={{ textAlign: "center" }}
-            onClick={addContact}
-          >
-            Create contact
-          </Button>
+          <a class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true" type="submit" onClick={addContact}>Create contact</a>
         </div>
       </Form>
       <div style={{ textAlign: "center", marginTop: "2.5rem"}}>
-        <Link
-          to="/"
-          style={{
-            backgroundColor: "white",
-            color: "black",
-            textDecoration: "none",
-            fontWeight: "bolder",
-            width: "100%",
-            textAlign: "center",
-          }}
-        >
-          Back
-        </Link>
+        <a id="button" href={`/`} class="btn btn-secondary btn-lg active btn-sm" role="button" aria-pressed="true">Back</a>
       </div>
     </div>
   );
